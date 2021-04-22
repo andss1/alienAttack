@@ -2,3 +2,4 @@ C:\Users\belmo\OneDrive\Área de Trabalho\Códigos_game\code-master\Chapter02\De
 C:\Users\belmo\OneDrive\Área de Trabalho\Códigos_game\code-master\Chapter02\Debug\Game.pdb
 C:\Users\belmo\Google Drive\Materiais_FEI\FEI-12021\games\aulas_minhas\1-2021\semana7_graficos2D_Insercao_de_Sprites\lab-ModificacaoShip\codigoShip\Chapter02\Debug\Game.exe
 C:\Users\belmo\Google Drive\Materiais_FEI\FEI-12021\games\aulas_minhas\1-2021\semana7_graficos2D_Insercao_de_Sprites\lab-ModificacaoShip\codigoShip\Chapter02\Debug\Game.pdb
+C:\Users\simao\OneDrive - FEI\7_sem\jogosDigitais\alienAttack\Chapter02\Debug\Game.exe

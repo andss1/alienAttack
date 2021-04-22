@@ -20,4 +20,5 @@ public:
 private:
 	float mRightSpeed;
 	float mDownSpeed;
+	bool press_space;
 };

@@ -14,6 +14,7 @@ Ship::Ship(Game* game)
 	:Actor(game)
 	,mRightSpeed(0.0f)
 	,mDownSpeed(0.0f)
+	,press_space(false)
 {
 	// Create an animated sprite component for the Ship using images of the project
 	AnimSpriteComponent* asc = new AnimSpriteComponent(this);
@@ -23,6 +24,7 @@ Ship::Ship(Game* game)
 		game->GetTexture("Assets/Ship03.png"),
 		game->GetTexture("Assets/Ship04.png"),
 	};
+
 	//set the textures to the Ship vector of animated sprites
 	asc->SetAnimTextures(anims);
 }
@@ -79,5 +81,17 @@ void Ship::ProcessKeyboard(const uint8_t* state)
 	if (state[SDL_SCANCODE_W])
 	{
 		mDownSpeed -= 300.0f;
+	}
+	if (state[SDL_SCANCODE_SPACE])
+	{
+		//Garante que player não atire diversas vezes como o ESPAÇO pressionado
+		if (press_space == false) 
+		{
+			press_space = true;
+			printf("Atirou!");
+		}
+	}
+	if (!state[SDL_SCANCODE_SPACE]) {
+		press_space = false;
 	}
 }
