@@ -54,4 +54,9 @@ private:
 
 	// Game-specific
 	class Ship* mShip; // Player's ship
+
+	class Enemy* mEnemy; // Enemy test
+
+	int enemyProb;
+	std::vector<class Enemy*> mEnemys;// Vetor de inimigos
 };

@@ -13,6 +13,8 @@
 #include "SpriteComponent.h"
 #include "Ship.h"
 #include "BGSpriteComponent.h"
+#include "Enemy.h"
+#include "Time.h"
 
 Game::Game()
 :mWindow(nullptr)
@@ -135,6 +137,18 @@ void Game::UpdateGame()
 	{
 		delete actor;
 	}
+	
+	enemyProb = (rand() % 1000) + 1;
+	if (enemyProb <= 20) {
+		//float ex = (float)(rand() % 1000) + 1;
+		float ey = (float)(rand() % 740) + 1;;
+
+		mEnemy = new Enemy(this);
+		mEnemy->SetPosition(Vector2(1024.0f, ey));
+		mEnemy->SetScale(0.8f);
+
+		mEnemys.push_back(mEnemy);
+	}
 }
 
 void Game::GenerateOutput()
@@ -157,6 +171,12 @@ void Game::LoadData()
 	mShip = new Ship(this);
 	mShip->SetPosition(Vector2(100.0f, 384.0f));
 	mShip->SetScale(1.5f);
+
+	//Create 1 enemy
+	mEnemys;
+	/*mEnemy = new Enemy(this);
+	mEnemy->SetPosition(Vector2(1000.0f, 300.0f));
+	mEnemy->SetScale(0.8f);*/
 
 	//--------------------------------Criação do background----------------------------
 	// Create actor for the background (this doesn't need a subclass)

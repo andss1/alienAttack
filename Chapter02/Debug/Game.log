@@ -1,5 +1,5 @@
-﻿  Game.cpp
-  Ship.cpp
+﻿  Enemy.cpp
+  Game.cpp
   Gerando Código...
   Game.vcxproj -> C:\Users\simao\OneDrive - FEI\7_sem\jogosDigitais\alienAttack\Chapter02\Debug\Game.exe
   C:\Users\simao\OneDrive - FEI\7_sem\jogosDigitais\alienAttack\Chapter02\\..\external\SDL\lib\win\x86\libfreetype-6.dll

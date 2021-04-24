@@ -88,7 +88,7 @@ void Ship::ProcessKeyboard(const uint8_t* state)
 		if (press_space == false) 
 		{
 			press_space = true;
-			printf("Atirou!");
+			
 		}
 	}
 	if (!state[SDL_SCANCODE_SPACE]) {
