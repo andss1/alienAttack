@@ -28,7 +28,7 @@ void Enemy::UpdateActor(float deltaTime)
 	Actor::UpdateActor(deltaTime);
 	// Update position based on speeds and delta time
 	Vector2 pos = GetPosition();
-	pos.x = pos.x- 15 ;
+	pos.x = pos.x- 5 ;
 
 	SetPosition(pos);
 }

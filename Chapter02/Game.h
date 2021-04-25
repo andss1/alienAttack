@@ -31,6 +31,7 @@ private:
 	void ProcessInput();
 	void UpdateGame();
 	void GenerateOutput();
+	void Game::drawText(int x, int y, int sizeF, SDL_Color color, const char* fmt, ...);
 	void LoadData();
 	void UnloadData();
 	
@@ -62,4 +63,6 @@ private:
 
 	class Shoot* mShoot;
 	std::vector<class Shoot*> mShoots; //Vetor de tiros
+
+	int score;
 };

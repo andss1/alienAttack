@@ -8,6 +8,7 @@
 
 #include "Game.h"
 #include "SDL/SDL_image.h"
+#include "SDL/SDL_ttf.h"
 #include <algorithm>
 #include "Actor.h"
 #include "SpriteComponent.h"
@@ -21,6 +22,7 @@ Game::Game()
 ,mRenderer(nullptr)
 ,mIsRunning(true)
 ,mUpdatingActors(false)
+,score(0)
 {
 	
 }
@@ -171,7 +173,36 @@ void Game::UpdateGame()
 			mEnemys.erase(mEnemys.begin()+i);
 		}
 	}
-	//printf("%d\n", mEnemys.size());
+
+	for (int i = 0; i < mShoots.size(); i++) {
+		Vector2 pos = mShoots[i]->GetPosition();
+		if (pos.x >= 1024) {
+			mShoots[i]->SetState(Actor::EDead);
+			mShoots.erase(mShoots.begin() + i);
+		}
+	}
+
+	if (mEnemys.size() > 0 && mShoots.size() > 0) {
+		for (int i = 0; i < mShoots.size(); i++) {
+			for (int j = 0; j < mEnemys.size(); j++) {
+
+				if (mShoots[i]->GetPosition().x > mEnemys[j]->GetPosition().x) {
+					if (mShoots[i]->GetPosition().y >= mEnemys[j]->GetPosition().y && 
+						mShoots[i]->GetPosition().y <= mEnemys[j]->GetPosition().y+40) {
+
+						mShoots[i]->SetState(Actor::EDead);
+						mShoots.erase(mShoots.begin() + i);
+
+						mEnemys[j]->SetState(Actor::EDead);
+						mEnemys.erase(mEnemys.begin() + j);
+
+						score++;
+
+					}
+				}
+			}
+		}
+	}
 
 }
 
@@ -186,7 +217,48 @@ void Game::GenerateOutput()
 		sprite->Draw(mRenderer);
 	}
 
+	SDL_Color color = { 255,255,255,255 };
+	drawText(700, 50, 18, color, "Pontuação: ");
+	SDL_UpdateWindowSurface(mWindow);
+
+	color = { 255,255,255,255 };
+	drawText(850, 50, 18, color, "%d", score);
+	SDL_UpdateWindowSurface(mWindow);
+
 	SDL_RenderPresent(mRenderer);
+}
+
+void Game::drawText(int x, int y, int sizeF, SDL_Color color, const char* fmt, ...) {
+	//Inicializar fontes
+	TTF_Font* fonte = NULL;
+	TTF_Init();
+	fonte = TTF_OpenFont("fonts/joystick.ttf", sizeF);
+
+	//verifica se houve problema pra carregar fonte
+	if (!fonte) {
+		printf("Problema ao carregar fonte: %s \n", TTF_GetError());
+	}
+	if (TTF_Init() < 0) {
+		// Error handling code
+	}
+
+	char buffer[1024] = { 0 };
+	va_list ap;
+	va_start(ap, fmt);
+	SDL_vsnprintf(buffer, 1024, fmt, ap);
+
+	SDL_Surface* text = TTF_RenderText_Solid(fonte, buffer, color);
+	SDL_Texture* textureText = SDL_CreateTextureFromSurface(mRenderer, text);
+
+	SDL_Rect dest = { x, y };
+	SDL_QueryTexture(textureText, NULL, NULL, &dest.w, &dest.h);
+
+	SDL_FreeSurface(text);
+
+	SDL_RenderCopy(mRenderer, textureText, NULL, &dest);
+
+	SDL_DestroyTexture(textureText);
+	TTF_CloseFont(fonte);
 }
 
 void Game::LoadData()
@@ -197,7 +269,7 @@ void Game::LoadData()
 	mShip->SetScale(1.5f);
 
 	//Create enemys
-	mEnemys;
+	//mEnemys;
 
 	//Shoots
 	//mShoots;
