@@ -18,11 +18,12 @@
 #include "Time.h"
 
 Game::Game()
-:mWindow(nullptr)
-,mRenderer(nullptr)
-,mIsRunning(true)
-,mUpdatingActors(false)
-,score(0)
+	:mWindow(nullptr)
+	, mRenderer(nullptr)
+	, mIsRunning(true)
+	, mUpdatingActors(false)
+	, score(0)
+	, especial(0)
 {
 	
 }
@@ -140,7 +141,7 @@ void Game::UpdateGame()
 		delete actor;
 	}
 	
-	enemyProb = (rand() % 5000) + 1;
+	enemyProb = (rand() % 2000) + 1;
 	if (enemyProb <= 20) {
 		//float ex = (float)(rand() % 1000) + 1;
 		float ey = (float)(rand() % 740) + 1;;
@@ -183,8 +184,8 @@ void Game::UpdateGame()
 	}
 
 	if (mEnemys.size() > 0 && mShoots.size() > 0) {
-		for (int i = 0; i < mShoots.size(); i++) {
-			for (int j = 0; j < mEnemys.size(); j++) {
+		for (int j = 0; j < mEnemys.size(); j++) {
+			for (int i = 0; i < mShoots.size(); i++) {
 
 				if (mShoots[i]->GetPosition().x > mEnemys[j]->GetPosition().x) {
 					if (mShoots[i]->GetPosition().y >= mEnemys[j]->GetPosition().y && 
@@ -198,8 +199,22 @@ void Game::UpdateGame()
 
 						score++;
 
+						if (especial < 10) {
+							especial++;
+						}
 					}
 				}
+			}
+		}
+	}
+	
+	if (mShip->shipEsp == true && especial == 10) {
+		especial = 0;
+		mShip->shipEsp = false;
+
+		if (mEnemys.size() > 0) {
+			for (int i = 0; i < mEnemys.size(); i++) {
+				mEnemys[i]->mLeftSpeed = 0;
 			}
 		}
 	}
@@ -224,6 +239,12 @@ void Game::GenerateOutput()
 	color = { 255,255,255,255 };
 	drawText(850, 50, 18, color, "%d", score);
 	SDL_UpdateWindowSurface(mWindow);
+
+	if (especial == 10) {
+		color = { 255,255,255,255 };
+		drawText(840, 700, 18, color, "ESPECIAL");
+		SDL_UpdateWindowSurface(mWindow);
+	}
 
 	SDL_RenderPresent(mRenderer);
 }

@@ -4,7 +4,7 @@
 
 Enemy::Enemy(Game* game)
 	:Actor(game)
-	, mRightSpeed(0.0f)
+	, mLeftSpeed(5.0f)
 	, mDownSpeed(0.0f)
 {
 	// Create an animated sprite component for the Ship using images of the project
@@ -28,7 +28,7 @@ void Enemy::UpdateActor(float deltaTime)
 	Actor::UpdateActor(deltaTime);
 	// Update position based on speeds and delta time
 	Vector2 pos = GetPosition();
-	pos.x = pos.x- 5 ;
+	pos.x = pos.x- mLeftSpeed;
 
 	SetPosition(pos);
 }

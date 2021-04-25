@@ -17,6 +17,7 @@ Ship::Ship(Game* game)
 	,mDownSpeed(0.0f)
 	,press_space(false)
 	,disparou(false)
+	,shipEsp(false)
 {
 	// Create an animated sprite component for the Ship using images of the project
 	AnimSpriteComponent* asc = new AnimSpriteComponent(this);
@@ -97,6 +98,10 @@ void Ship::ProcessKeyboard(const uint8_t* state)
 	if (!state[SDL_SCANCODE_SPACE]) {
 		disparou = false;
 		press_space = false;
+	}
+
+	if(state[SDL_SCANCODE_A]) {
+		shipEsp = true;
 	}
 }
 

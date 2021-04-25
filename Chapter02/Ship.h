@@ -20,6 +20,7 @@ public:
 	float GetDownSpeed() const { return mDownSpeed; }
 	
 	bool disparou;
+	bool shipEsp;
 
 private:
 	float mRightSpeed;

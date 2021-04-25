@@ -1,8 +1,12 @@
-﻿  Game.cpp
-C:\Users\simao\OneDrive - FEI\7_sem\jogosDigitais\alienAttack\Chapter02\Game.cpp(168,20): warning C4018: '<': incompatibilidade de signed/unsigned
-C:\Users\simao\OneDrive - FEI\7_sem\jogosDigitais\alienAttack\Chapter02\Game.cpp(177,20): warning C4018: '<': incompatibilidade de signed/unsigned
-C:\Users\simao\OneDrive - FEI\7_sem\jogosDigitais\alienAttack\Chapter02\Game.cpp(186,21): warning C4018: '<': incompatibilidade de signed/unsigned
-C:\Users\simao\OneDrive - FEI\7_sem\jogosDigitais\alienAttack\Chapter02\Game.cpp(187,22): warning C4018: '<': incompatibilidade de signed/unsigned
+﻿  Enemy.cpp
+  Game.cpp
+C:\Users\simao\OneDrive - FEI\7_sem\jogosDigitais\alienAttack\Chapter02\Game.cpp(169,20): warning C4018: '<': incompatibilidade de signed/unsigned
+C:\Users\simao\OneDrive - FEI\7_sem\jogosDigitais\alienAttack\Chapter02\Game.cpp(178,20): warning C4018: '<': incompatibilidade de signed/unsigned
+C:\Users\simao\OneDrive - FEI\7_sem\jogosDigitais\alienAttack\Chapter02\Game.cpp(187,21): warning C4018: '<': incompatibilidade de signed/unsigned
+C:\Users\simao\OneDrive - FEI\7_sem\jogosDigitais\alienAttack\Chapter02\Game.cpp(188,22): warning C4018: '<': incompatibilidade de signed/unsigned
+C:\Users\simao\OneDrive - FEI\7_sem\jogosDigitais\alienAttack\Chapter02\Game.cpp(216,22): warning C4018: '<': incompatibilidade de signed/unsigned
+  Ship.cpp
+  Gerando Código...
   Game.vcxproj -> C:\Users\simao\OneDrive - FEI\7_sem\jogosDigitais\alienAttack\Chapter02\Debug\Game.exe
   C:\Users\simao\OneDrive - FEI\7_sem\jogosDigitais\alienAttack\Chapter02\\..\external\SDL\lib\win\x86\libfreetype-6.dll
   C:\Users\simao\OneDrive - FEI\7_sem\jogosDigitais\alienAttack\Chapter02\\..\external\SDL\lib\win\x86\libogg-0.dll

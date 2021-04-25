@@ -65,4 +65,5 @@ private:
 	std::vector<class Shoot*> mShoots; //Vetor de tiros
 
 	int score;
+	int especial;
 };
