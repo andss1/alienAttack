@@ -138,7 +138,7 @@ void Game::UpdateGame()
 		delete actor;
 	}
 	
-	enemyProb = (rand() % 1000) + 1;
+	enemyProb = (rand() % 5000) + 1;
 	if (enemyProb <= 20) {
 		//float ex = (float)(rand() % 1000) + 1;
 		float ey = (float)(rand() % 740) + 1;;
@@ -149,6 +149,30 @@ void Game::UpdateGame()
 
 		mEnemys.push_back(mEnemy);
 	}
+
+	if (mShip->disparou == true) {
+		Vector2 pos = mShip->GetPosition();
+		
+		float sx = pos.x + 30;
+		float sy = pos.y + 15;
+
+		mShoot = new Shoot(this);
+		mShoot->SetPosition(Vector2(sx, sy));
+		mShoot->SetScale(1.0f);
+
+		mShoots.push_back(mShoot);
+	}
+
+	for (int i = 0; i < mEnemys.size(); i++) {
+		Vector2 pos = mEnemys[i]->GetPosition();
+		
+		if (pos.x <= 0) {
+			mEnemys[i]->SetState(Actor::EDead);
+			mEnemys.erase(mEnemys.begin()+i);
+		}
+	}
+	//printf("%d\n", mEnemys.size());
+
 }
 
 void Game::GenerateOutput()
@@ -172,11 +196,11 @@ void Game::LoadData()
 	mShip->SetPosition(Vector2(100.0f, 384.0f));
 	mShip->SetScale(1.5f);
 
-	//Create 1 enemy
+	//Create enemys
 	mEnemys;
-	/*mEnemy = new Enemy(this);
-	mEnemy->SetPosition(Vector2(1000.0f, 300.0f));
-	mEnemy->SetScale(0.8f);*/
+
+	//Shoots
+	//mShoots;
 
 	//--------------------------------Criação do background----------------------------
 	// Create actor for the background (this doesn't need a subclass)

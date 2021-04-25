@@ -81,3 +81,4 @@ void Actor::RemoveComponent(Component* component)//remove componentes
 		mComponents.erase(iter);
 	}
 }
+

@@ -8,6 +8,7 @@
 
 #pragma once
 #include "Actor.h"
+#include "Shoot.h"
 class Ship : public Actor
 {
 	//as Ship will be controlled, it needs proper methods for it
@@ -17,8 +18,12 @@ public:
 	void ProcessKeyboard(const uint8_t* state);
 	float GetRightSpeed() const { return mRightSpeed; }
 	float GetDownSpeed() const { return mDownSpeed; }
+	
+	bool disparou;
+
 private:
 	float mRightSpeed;
 	float mDownSpeed;
 	bool press_space;
+
 };

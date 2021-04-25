@@ -57,6 +57,9 @@ private:
 
 	class Enemy* mEnemy; // Enemy test
 
-	int enemyProb;
+	int enemyProb; 
 	std::vector<class Enemy*> mEnemys;// Vetor de inimigos
+
+	class Shoot* mShoot;
+	std::vector<class Shoot*> mShoots; //Vetor de tiros
 };

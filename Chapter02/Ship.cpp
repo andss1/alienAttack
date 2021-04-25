@@ -7,6 +7,7 @@
 // ----------------------------------------------------------------
 
 #include "Ship.h"
+#include "Shoot.h"
 #include "AnimSpriteComponent.h"
 #include "Game.h"
 
@@ -15,6 +16,7 @@ Ship::Ship(Game* game)
 	,mRightSpeed(0.0f)
 	,mDownSpeed(0.0f)
 	,press_space(false)
+	,disparou(false)
 {
 	// Create an animated sprite component for the Ship using images of the project
 	AnimSpriteComponent* asc = new AnimSpriteComponent(this);
@@ -62,6 +64,7 @@ void Ship::UpdateActor(float deltaTime)
 //Remember that the speed is given by some amount of pixels drawn in a given delta time
 void Ship::ProcessKeyboard(const uint8_t* state)
 {
+	disparou = false;
 	mRightSpeed = 0.0f;
 	mDownSpeed = 0.0f;
 	// right/left
@@ -88,10 +91,12 @@ void Ship::ProcessKeyboard(const uint8_t* state)
 		if (press_space == false) 
 		{
 			press_space = true;
-			
+			disparou = true;
 		}
 	}
 	if (!state[SDL_SCANCODE_SPACE]) {
+		disparou = false;
 		press_space = false;
 	}
 }
+

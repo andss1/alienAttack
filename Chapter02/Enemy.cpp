@@ -28,28 +28,7 @@ void Enemy::UpdateActor(float deltaTime)
 	Actor::UpdateActor(deltaTime);
 	// Update position based on speeds and delta time
 	Vector2 pos = GetPosition();
-	pos.x = pos.x-- ;
-	//pos.y = 300.0f;
+	pos.x = pos.x- 15 ;
 
-
-	/*pos.x += mRightSpeed * deltaTime;
-
-	// Restrict position to left half of screen
-	if (pos.x < 25.0f)
-	{
-		pos.x = 25.0f;
-	}
-	else if (pos.x > 500.0f)
-	{
-		pos.x = 500.0f;
-	}
-	if (pos.y < 25.0f)
-	{
-		pos.y = 25.0f;
-	}
-	else if (pos.y > 743.0f)
-	{
-		pos.y = 743.0f;
-	}*/
 	SetPosition(pos);
 }
